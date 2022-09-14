@@ -11,7 +11,6 @@ function my_setup()
   add_theme_support('title-tag');
   add_theme_support('html5', array(
     'style',
-    'script',
     'search-form',
     'gallery',
     'caption',
@@ -25,8 +24,8 @@ function my_script_init()
 {
   $timestamp = date('YmdHi');
   wp_enqueue_style('font', 'https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700&display=swap', array(), NULL, 'all');
-  wp_enqueue_style('base', get_template_directory_uri() . './css/style.css', array(), 1.0, 'all');
-  wp_enqueue_script('base', get_template_directory_uri() . './js/main.js', array(), 1.0, true);
+  wp_enqueue_style('base', get_template_directory_uri() . '/css/style.css', array(), 1.0, 'all');
+  wp_enqueue_script('base', get_template_directory_uri() . '/js/main.js', array(), 1.0, true);
   wp_deregister_script('jquery');
 
   // if (is_single()) {
@@ -38,6 +37,15 @@ function my_script_init()
   }
 }
 add_action('wp_enqueue_scripts', 'my_script_init');
+
+// jsファイルにtype属性付与
+// --------------------------------------------------------------------------
+function add_type_attribute($tag)
+{
+  $tag = str_replace('text/javascript', 'module', $tag);
+  return $tag;
+}
+add_filter('script_loader_tag', 'add_type_attribute', 10, 3);
 
 // 検索結果から固定ページを除外する
 // --------------------------------------------------------------------------
