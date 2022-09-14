@@ -1,0 +1,6 @@
+$fallback: 'Helvetica Neue', arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', meiryo, sans-serif;
+$mPlus: 'M PLUS Rounded 1c', sans-serif;
+$font: (
+  font-fallback: $fallback,
+  font-base: $mPlus,
+);

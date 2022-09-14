@@ -1,0 +1,32 @@
+@use 'sass:math';
+
+/* inner-width */
+$width-inner: (
+  width-inner-sm: calc(40 / 375 * 100vw),
+  width-inner-lg: calc(280 / 1280 * 100vw),
+  width-inner-mv-lg: calc(200 / 1280 * 100vw),
+  width-inner-contents-lg: calc(272 / 1000 * 100vw),
+);
+
+/* space */
+$spaces: (
+  space-sm: 20px,
+  space-md: 32px,
+  space-lg: 40px,
+  space-xl: 60px,
+  space-2xl: 80px,
+  space-3xl: 100px,
+  space-4xl: 160px,
+);
+
+:root {
+  @each $key, $width in $width-inner {
+    --size-#{$key}: #{$width};
+  }
+  @each $key, $space in $spaces {
+    --size-#{$key}: #{$space};
+  }
+  @each $key, $component in $components {
+    --size-#{$key}: #{$component};
+  }
+}

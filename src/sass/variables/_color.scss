@@ -1,0 +1,53 @@
+@use 'sass:color';
+@use '../functions/color' as *;
+
+// palettes
+// --------------------------------------------------------------------------
+$black: #393939;
+$deepBlack: #000;
+$white: #fff;
+$gray: #888;
+$blue: #1391e6;
+$navy: #0060a0;
+$babyBlue: #dff1fd;
+$red: #ee5a6d;
+
+// sns color
+$twitter: #1da1f2;
+$fb: #3b5998;
+$hatena: #00a4de;
+$feedly: #6cc655;
+
+// color map
+// --------------------------------------------------------------------------
+$theme-colors: (
+  bg-body: $white,
+  bg-contents: $babyBlue,
+  text: $black,
+  base: $blue,
+  secondary: $navy,
+  tertiary: $babyBlue,
+  accent: $red,
+  white: $white,
+  gray: $gray,
+  shadow: $deepBlack,
+);
+
+$sns-colors: (
+  twitter: $twitter,
+  fb: $fb,
+  hatena: $hatena,
+  feedly: $feedly,
+);
+
+// color root
+// --------------------------------------------------------------------------
+:root {
+  @each $key, $color in $theme-colors {
+    --c-#{$key}: #{hexToRGB($color)};
+  }
+
+  @each $key, $color in $sns-colors {
+    --c-#{$key}: #{hexToRGB($color)};
+  }
+}
